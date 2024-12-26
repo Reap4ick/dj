@@ -1,0 +1,69 @@
+[
+    {
+        "pk": 1,
+        "model": "products.Product",
+        "fields": {
+            "name": "Laptop Pro",
+            "description": "High-performance laptop for professionals.",
+            "price": 1299.99,
+            "stock": 50,
+            "category": "Electronics"
+        }
+    },
+    {
+        "pk": 2,
+        "model": "products.Product",
+        "fields": {
+            "name": "Wireless Headphones",
+            "description": "Noise-cancelling headphones with long battery life.",
+            "price": 199.99,
+            "stock": 150,
+            "category": "Audio"
+        }
+    },
+    {
+        "pk": 3,
+        "model": "products.Product",
+        "fields": {
+            "name": "Smartwatch X",
+            "description": "Feature-packed smartwatch for health and productivity.",
+            "price": 299.99,
+            "stock": 100,
+            "category": "Wearables"
+        }
+    },
+    {
+        "pk": 4,
+        "model": "products.Product",
+        "fields": {
+            "name": "Gaming Chair",
+            "description": "Ergonomic gaming chair with adjustable settings.",
+            "price": 249.99,
+            "stock": 75,
+            "category": "Furniture"
+        }
+    },
+    {
+        "pk": 5,
+        "model": "products.Product",
+        "fields": {
+            "name": "4K Monitor",
+            "description": "Ultra HD monitor for gaming and professional use.",
+            "price": 399.99,
+            "stock": 60,
+            "category": "Electronics"
+        }
+    }
+    ,
+    {
+        "pk": 6,
+        "model": "products.Product",
+        "fields": {
+            "name": "4K Monitor",
+            "description": "Ultra HD monitor for gaming and professional use.",
+            "price": 399.99,
+            "stock": 60,
+            "category": "Electronics"
+        }
+    }
+]

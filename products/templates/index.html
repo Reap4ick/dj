@@ -1,0 +1,65 @@
+{% extends "_layout.html" %}
+
+{% block header %}User List{% endblock %}
+
+{% block content %}
+<!-- 
+<ul>
+    {% for user in users %}
+    <li>[{{user.id}}] - {{user.name}} {{user.phone}}</li>
+    {% endfor %}
+</ul> -->
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">Price</th>
+            <th scope="col">Stock</th>
+            <th scope="col">Category</th>
+            <th scope="col">Actions</th>
+
+<!-- 
+            <h3>Product{{error}}</h3>
+            <p>ID: {{product.id}}</p>
+            <p>Name: {{product.name}}</p>
+            <p>Description: {{product.description}}</p>
+            <p>Price: {{product.price}}</p>
+            <p>Stock: {{product.stock}}</p>
+            <p>Category: {{product.category}}</p> -->
+        </tr>
+    </thead>
+    <tbody>
+        {% for product in products %}
+        <tr>
+            <th scope="row">{{product.id}}</th>
+            <td>{{product.name | truncatechars:15}}</td>
+            <td>{{product.description | truncatechars:50}}</td>
+            <td>{{product.price| truncatechars:7}}</td>
+            <td>{{product.stock| truncatechars:7}}</td>
+            <td>{{product.category| truncatechars:15}}</td>
+
+
+            <td>
+
+                <div class="btn-group" role="group">
+                   
+                        <a type="button" class="btn btn-primary" href="{% url 'details' product.id %}">
+                            <i class="bi bi-eye"></i>
+                        </a>
+                        <a class="btn btn-warning" href="{% url 'edit' product.id%}">
+                            <i class="bi bi-pencil"></i>
+                        </a>
+                        <a type="button" class="btn btn-danger" href="{% url 'delete' product.id %}">
+                            <i class="bi bi-trash3"></i>
+                        </a>
+                    </a>
+                </div>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
