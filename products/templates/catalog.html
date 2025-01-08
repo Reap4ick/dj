@@ -1,0 +1,31 @@
+{% extends "_layout.html" %}
+
+{% block content %}
+<h1>Product Catalog</h1>
+
+<div class="row row-cols-1 row-cols-sm-3 row-cols-md-4 row-cols-lg-6 g-4 product-catalog">
+    {% for product in products %}
+    <div class="col">
+        <div class="card h-100">
+            {% comment %} TODO {% endcomment %}
+            {% if product.photo%}
+                <img src="{{product.photo}}" class="card-img-top" alt="{{product.name}}">
+            {% else %}
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1MWm4Uc-yhWB5bkRg8r_Vy6ueABFtDb_qSA" class="card-img-top" alt="{{product.name}}">
+            {% endif %}
+            <div class="card-body">
+                <h5 class="card-title">{{product.name}}</h5>
+                <p class="card-text">{{product.description | truncatechars:35}}</p>
+                <p class="card-text">
+                    {{product.price}} 
+                    <a style="float: right;" type="button" class="btn btn-primary" href="{% url 'moredetail' product.id %}">
+                        <i class="bi bi-eye"></i>
+                    </a>
+                </p>
+                
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

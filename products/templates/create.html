@@ -1,8 +1,10 @@
-{% extends "index.html" %}
+{% extends "_layout.html" %}
 
-{% block header %}Create New Product{% endblock %}
+
 
 {% block content %}
+<h1>Create New Product</h1>
+
 <form method="post">
     {% csrf_token %}
     

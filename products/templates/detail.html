@@ -1,8 +1,8 @@
 {% extends "_layout.html" %}
 
-{% block header %}User {{product.id}}{% endblock %}
-
 {% block content %}
+
+<h1>User {{product.id}}</h1>
 
 <h1 style="text-align: center;">{{error}}</h1>
 {% if error == None %}
@@ -34,8 +34,8 @@
                     <a type="button" class="btn btn-danger" href="{% url 'delete' product.id %}">
                         <i class="bi bi-trash3"></i>
                     </a>
-                </a>
-            </div>
+                    </a>
+                </div>
             </td>
         </tr>
     </tbody>

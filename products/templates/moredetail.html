@@ -1,0 +1,26 @@
+{% extends "_layout.html" %}
+
+{% block content %}
+
+<div class="container py-5">
+    <div class="card mx-auto shadow-sm" style="max-width: 800px;">
+        <div class="row g-0">
+            <!-- Product Image -->
+            <div class="col-md-5">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1MWm4Uc-yhWB5bkRg8r_Vy6ueABFtDb_qSA" class="img-fluid rounded-start" alt="{{ product.name }}">
+            </div>
+            <!-- Product Details -->
+            <div class="col-md-7">
+                <div class="card-body">
+                    <h2 class="card-title">{{ product.name }}</h2>
+                    <p class="card-text text-muted">Category: <strong>{{ product.category }}</strong></p>
+                    <p class="card-text">{{ product.description }}</p>
+                    <h4 class="text-success">Price: ${{ product.price }}</h4>
+                    <p class="card-text">Stock: <strong>{{ product.stock }}</strong></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

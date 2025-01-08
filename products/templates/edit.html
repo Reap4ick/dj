@@ -1,8 +1,9 @@
-{% extends "index.html" %}
+{% extends "_layout.html" %}
 
-{% block header %}Edit Product{% endblock %}
+
 
 {% block content %}
+<h1>Edit Product</h1>
 <form method="post">
     {% csrf_token %}
     
