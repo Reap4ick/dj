@@ -9,7 +9,7 @@
         <div class="card h-100">
             {% comment %} TODO {% endcomment %}
             {% if product.photo%}
-                <img src="{{product.photo}}" class="card-img-top" alt="{{product.name}}">
+                <img src="{{product.photo.url}}" class="card-img-top" alt="{{product.name}}">
             {% else %}
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1MWm4Uc-yhWB5bkRg8r_Vy6ueABFtDb_qSA" class="card-img-top" alt="{{product.name}}">
             {% endif %}

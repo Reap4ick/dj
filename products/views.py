@@ -1,9 +1,12 @@
+import os
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
 
 from products.forms.create import CreateProduct
 from products.forms.edit import EditProduct
 from products.models import Product
+from django.core.files.storage import default_storage
+
 
 
 
@@ -36,16 +39,21 @@ def moredetail(request, id):
     except:
         error="Product not except"
         return render(request, "moredetail.html", {"error": error,"return_url": "/products/catalog"})
-    
-def delete(request, id):
-    product = Product.objects.get(pk=id)
 
-    if product is None:
-        return HttpResponse("User not found")
+
+def delete(request, id):
+    try:
+        product = Product.objects.get(pk=id)
+    except Product.DoesNotExist:
+        return HttpResponse("Product not found", status=404)
+
+    if product.photo:
+        default_storage.delete(product.photo.name)
     
     product.delete()
     
     return redirect("/products/home")
+
 
 
 def create(request):
@@ -53,7 +61,7 @@ def create(request):
     form = CreateProduct()
 
     if request.method == "POST":
-        form = CreateProduct(request.POST)
+        form = CreateProduct(request.POST, request.FILES)
 
         if form.is_valid():
             form.save()
@@ -75,7 +83,7 @@ def edit(request, id):
     form = EditProduct(instance=product)
 
     if request.method == "POST":
-        form = CreateProduct(request.POST, instance=product)
+        form = CreateProduct(request.POST, request.FILES, instance=product)
 
         if form.is_valid():
             form.save()

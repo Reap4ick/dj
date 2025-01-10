@@ -7,7 +7,11 @@
         <div class="row g-0">
             <!-- Product Image -->
             <div class="col-md-5">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1MWm4Uc-yhWB5bkRg8r_Vy6ueABFtDb_qSA" class="img-fluid rounded-start" alt="{{ product.name }}">
+                {% if product.photo%}
+                    <img src="{{product.photo.url}}" class="card-img-top" alt="{{product.name}}">
+                {% else %}
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1MWm4Uc-yhWB5bkRg8r_Vy6ueABFtDb_qSA" class="card-img-top" alt="{{product.name}}">
+                {% endif %}
             </div>
             <!-- Product Details -->
             <div class="col-md-7">

@@ -4,7 +4,7 @@
 
 {% block content %}
 <h1>Edit Product</h1>
-<form method="post">
+<form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     
     <div class="mb-3">
@@ -27,7 +27,10 @@
         <label class="form-label">Category</label>
         <input type="text" name="category" class="form-control" value="{{ form.category.value }}" required>
     </div>
-    <div>
+    <div class="mb-3">
+        <label class="form-label">Photo</label>
+        <input type="file" name="photo" class="form-control" value="{{ form.photo.value }}" required>
+    </div>
         <button type="submit" class="btn btn-primary">Save Changes</button>
     </div>
 </form>
