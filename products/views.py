@@ -1,4 +1,5 @@
 import os
+from django.forms import model_to_dict
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
 
@@ -35,7 +36,11 @@ def moredetail(request, id):
     try:
         product = Product.objects.get(pk=id)
         print(product)
-        return render(request, "moredetail.html", {"product": product,"return_url": "/products/catalog"})
+        return render(request, "moredetail.html", {"product": {
+            **model_to_dict(product),
+            "categoryName": Product.CATEGORY_CHOICES[product.category][1]
+        }, 
+        "return_url": "/products/catalog"})
     except:
         error="Product not except"
         return render(request, "moredetail.html", {"error": error,"return_url": "/products/catalog"})
@@ -66,8 +71,8 @@ def create(request):
         if form.is_valid():
             form.save()
             return redirect("/products/list")
-
-    return render(request, "create.html", {"form": form,"return_url": "/products/list"})
+    print(Product.CATEGORY_CHOICES)
+    return render(request, "create.html", {"form": form,"return_url": "/products/list", "category": Product.CATEGORY_CHOICES})
 
 def catalog(request):
     products = Product.objects.all()
@@ -85,8 +90,12 @@ def edit(request, id):
     if request.method == "POST":
         form = CreateProduct(request.POST, request.FILES, instance=product)
 
+        if request.FILES and product.photo: # do work when avatar != None, 0, False, "", [], (), {}
+            product.photo.delete()
+
         if form.is_valid():
             form.save()
             return redirect("/products/list")
 
     return render(request, "edit.html", {"form": form,"return_url": "/products/list"})
+

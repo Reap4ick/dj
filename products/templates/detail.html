@@ -26,6 +26,7 @@
             <td>{{product.price| truncatechars:7}}</td>
             <td>{{product.stock| truncatechars:7}}</td>
             <td>{{product.category| truncatechars:15}}</td>
+            
             <td>
                 <div class="btn-group" role="group">
                     <a class="btn btn-warning" href="{% url 'edit' product.id%}">

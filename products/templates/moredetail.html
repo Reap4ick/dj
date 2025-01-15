@@ -17,10 +17,12 @@
             <div class="col-md-7">
                 <div class="card-body">
                     <h2 class="card-title">{{ product.name }}</h2>
-                    <p class="card-text text-muted">Category: <strong>{{ product.category }}</strong></p>
+                    <p class="card-text text-muted">Category: <strong>{{ product.categoryName }}</strong></p>
                     <p class="card-text">{{ product.description }}</p>
+
                     <h4 class="text-success">Price: ${{ product.price }}</h4>
                     <p class="card-text">Stock: <strong>{{ product.stock }}</strong></p>
+
                 </div>
             </div>
         </div>

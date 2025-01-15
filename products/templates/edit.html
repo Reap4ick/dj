@@ -6,7 +6,12 @@
 <h1>Edit Product</h1>
 <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
-    
+    {% if form.photo.value %}
+    <div class="photo">
+        <img src="{{form.photo.value.url}}" alt="">
+    </div>
+    {% endif %}
+
     <div class="mb-3">
         <label class="form-label">Name</label>
         <input type="text" name="name" class="form-control" value="{{ form.name.value }}" required>
@@ -31,7 +36,28 @@
         <label class="form-label">Photo</label>
         <input type="file" name="photo" class="form-control" value="{{ form.photo.value }}" required>
     </div>
-        <button type="submit" class="btn btn-primary">Save Changes</button>
+    <button type="submit" class="btn btn-primary">Save Changes</button>
     </div>
 </form>
 {% endblock %}
+{% block script %}
+<script>
+    const photoInput = document.querySelector('input[name="photo"]');
+    const photoImg = document.querySelector('.photo img');
+
+    photoImg.addEventListener('click', () => {
+        photoInput.click();
+    });
+
+    photoInput.addEventListener('change', () => {
+        const file = photoInput.files[0];
+        const reader = new FileReader();
+
+        reader.onload = () => {
+            photoImg.src = reader.result;
+        }
+
+        reader.readAsDataURL(file);
+    });
+</script>
+{% endblock script %}
