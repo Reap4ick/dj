@@ -83,22 +83,22 @@ WSGI_APPLICATION = 'djangoproject.wsgi.application'
 # }
 DATABASES = {
     "default": {
-        # "ENGINE": "django.db.backends.postgresql",
-        # "NAME": "dj",
-        # "USER": "postgres",
-        # "PASSWORD": "Kep_rep1234",
-        # "HOST": "localhost",
-        # "PORT": "5432",
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "djangoDB",
+        "USER": "postgres",
+        "PASSWORD": "Kep_Rep1234",
+        "HOST": "localhost",
+        "PORT": "5432",
         # "OPTIONS": {"driver": "ODBC Driver 17 for SQL Server", 
         # },
-        "ENGINE": "mssql",
-        "NAME": "django-db",
-        "USER": "wladnaz_SQLLogin_1",
-        "PASSWORD": "qsyiy5d3ff",
-        "HOST": "django-db.mssql.somee.com",
-        # "PORT": "1433",
-        "OPTIONS": {"driver": "ODBC Driver 17 for SQL Server", 
-        },
+
+        # "ENGINE": "mssql",
+        # "NAME": "django-db",
+        # "USER": "wladnaz_SQLLogin_1",
+        # "PASSWORD": "qsyiy5d3ff",
+        # "HOST": "django-db.mssql.somee.com",
+        # "OPTIONS": {"driver": "ODBC Driver 17 for SQL Server", 
+        # },
     },
 }
 
