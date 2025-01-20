@@ -1,7 +1,8 @@
-import os
 from django.forms import model_to_dict
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
+from django.contrib import messages
+
 
 from products.forms.create import CreateProduct
 from products.forms.edit import EditProduct
@@ -52,11 +53,13 @@ def delete(request, id):
     except Product.DoesNotExist:
         return HttpResponse("Product not found", status=404)
 
+    
+
     if product.photo:
         default_storage.delete(product.photo.name)
     
     product.delete()
-    
+    messages.error(request, "Product delete successfully!")
     return redirect("/products/home")
 
 
@@ -70,8 +73,12 @@ def create(request):
 
         if form.is_valid():
             form.save()
+
+            messages.success(request, "Product created successfully!")
             return redirect("/products/list")
-    print(Product.CATEGORY_CHOICES)
+        else:
+            messages.error(request, "Invalid data!")
+
     return render(request, "create.html", {"form": form,"return_url": "/products/list", "category": Product.CATEGORY_CHOICES})
 
 def catalog(request):
@@ -95,7 +102,11 @@ def edit(request, id):
 
         if form.is_valid():
             form.save()
+            messages.info(request, "Product edit successfully!")
             return redirect("/products/list")
+            
+        else:
+            messages.error(request, "Invalid data!")
 
     return render(request, "edit.html", {"form": form,"return_url": "/products/list"})
 

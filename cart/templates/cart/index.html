@@ -1,0 +1,14 @@
+{% extends "_layout.html" %}
+
+{% block content %}
+<h1>User Cart</h1>
+
+<ul class="list-group">
+    {% for i in products %}
+    <li class="list-group-item">{{i.name}} - {{i.price}}</li>
+    {% endfor %}
+</ul>
+<div>
+    <a href="clear/" class="btn btn-secondary mt-3">Clear</a>
+</div>
+{% endblock %}

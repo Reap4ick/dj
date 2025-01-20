@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'products',
+    "cart",
 ]
 
 MIDDLEWARE = [
@@ -89,8 +90,6 @@ DATABASES = {
         "PASSWORD": "Kep_Rep1234",
         "HOST": "localhost",
         "PORT": "5432",
-        # "OPTIONS": {"driver": "ODBC Driver 17 for SQL Server", 
-        # },
 
         # "ENGINE": "mssql",
         # "NAME": "django-db",
